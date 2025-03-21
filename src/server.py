@@ -41,7 +41,16 @@ def get_news(
         "page": page,
         "per_page": per_page,
     }
-
+@app.get("/category/{category_search}")
+def get_category_news(category:str):
+    data_search_cat = allData()["description"].str.contains(category)
+    data_get_news =  data_search_cat.to_dict(orient="records")
+    return {
+    "news":data_get_news
+    }
+    
+    
+    
 
 @app.get("/news/{query_search}")
 async def search_bar(

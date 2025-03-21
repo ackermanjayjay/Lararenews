@@ -77,7 +77,7 @@ class NewsController extends Controller
         );
 
         // Pass data to the view
-        return view('index', compact('news', 'search'));
+        return view('news_search', compact('news', 'search'));
 
     }
 

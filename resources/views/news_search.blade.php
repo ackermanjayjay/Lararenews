@@ -11,13 +11,6 @@
     {{-- Navbar --}}
     <div class="navbar bg-base-100 shadow-sm">
         <div class="flex-1">
-            <details class="dropdown">
-                <summary class="btn m-1">Category</summary>
-                <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                  <li><a>Item 1</a></li>
-                  <li><a>Item 2</a></li>
-                </ul>
-              </details>
             <a class="btn btn-ghost text-xl">Madders News</a>
         </div>
         <form class="search-form" method="GET" action="{{ url('/news/text') }}">
@@ -39,7 +32,7 @@
     </div>
     {{-- Content --}}
 
-    <div class="mt-5 mx-5 justify-start grid grid-cols-2 gap-5 p-5 md:grid-cols-3">
+    <div class="mt-5 mx-5 justify-start grid grid-cols-3 gap-5">
         @if ($news->count() > 0)
             @foreach ($news as $item)
                 <div class="card bg-base-80 w-75 shadow-sm">
@@ -49,9 +42,9 @@
                     </figure>
                     <div class="card-body">
                         <h2 class="card-title">{{ $item['title'] }}</h2>
-                        <p>{{$item['description']}}
+                        <p>{{$item['news_description']}}
                         </p>
-                        <div class="badge badge-info"></div>
+                        <div class="badge badge-info">{{100 *$item['score']}} %</div>
                     </div>
                 </div>
             @endforeach
